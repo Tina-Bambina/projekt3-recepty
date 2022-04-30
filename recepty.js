@@ -120,10 +120,10 @@ let indexRecept = 0;
 filtry();
 receptySeznam();
 receptyPodrobnostiKlik();
-//receptyObrazek();
+
 
 function filtry(){
-
+  filterArray = [...receptos];
   hledejDleJmena();
   filtrKategorie();
   radaHodnoceni();
@@ -149,20 +149,21 @@ function receptySeznam() {
     let nadpisReceptInfo = document.createElement('h3');
     nadpisReceptInfo.innerHTML= receptos[indexRecept].nadpis;
     receptInfo.appendChild(nadpisReceptInfo);
-    receptInfo.setAttribute('data-index', indexRecept)
-    nadpisReceptInfo.setAttribute('data-index', indexRecept)
+    receptInfo.setAttribute('data-index', indexRecept);
+    nadpisReceptInfo.setAttribute('data-index', indexRecept);
 
     //doprovodny obrazek receptu - mel by byt v tom policku!
     let receptObrazek =document.createElement('div');
     receptObrazek.className='recept-obrazek';
     recepty.appendChild(receptObrazek);
+    receptObrazek.setAttribute('data-index', indexRecept);
 
     let receptObrazekImg = document.createElement('img');
     receptObrazekImg.src=receptos[indexRecept].img;
     receptObrazekImg.alt="obrazek";
     receptObrazek.appendChild(receptObrazekImg);
-    receptObrazek.setAttribute('data-index', indexRecept)
-    receptObrazekImg.setAttribute('data-index', indexRecept)
+  
+    receptObrazekImg.setAttribute('data-index', indexRecept);
 
     indexRecept++
 
@@ -170,9 +171,26 @@ function receptySeznam() {
     recept.addEventListener('click', receptyPodrobnostiKlik);
     recept.setAttribute('data-index', indexRecept)
 
-  }
+    vytvorPolePoKliku()
 
+  }
 }
+
+function    vytvorPolePoKliku(){
+    //divy zobrazujici se po kliknuti - tady je chyba
+    let recept = document.querySelector('div');
+
+    let receptNadpis = document.createElement('div');
+    receptNadpis.className="recept-nadpis";
+    recept.appendChild(receptNadpis);
+    receptNadpis.setAttribute('data-index', indexRecept)
+
+    let receptPopis = document.createElement('div');
+    receptPopis.className="recept-popis";
+    recept.appendChild(receptPopis);
+    receptPopis.setAttribute('data-index', indexRecept)
+}
+
 
  function receptyPodrobnostiKlik(klikRecept, indexKlikRecept) {
     console.log('ddd')
@@ -184,8 +202,8 @@ function receptySeznam() {
     //ostatni jsou innerhtml!!!!!
     document.querySelector('#recept-kategorie').innerHTML=receptos[indexKlikRecept].kategorie;
     document.querySelector('#recept-hodnoceni').innerHTML=receptos[indexKlikRecept].hodnoceni;
-  //  document.querySelector('#recept-nadpis').innerHTML=receptos[indexKlikRecept].nadpis;
-  //  document.querySelector('#recept-popis').innerHTML=receptos[indexKlikRecept].popis;
+    document.querySelector('#recept-nadpis').innerHTML=receptos[indexKlikRecept].nadpis;
+    document.querySelector('#recept-popis').innerHTML=receptos[indexKlikRecept].popis;
 
     ulozKlikRecept(indexKlikRecept)
  }
@@ -203,6 +221,7 @@ function receptySeznam() {
 
  function hledejDleJmena() {
   console.log('jmeno')
+
 }
 
 
