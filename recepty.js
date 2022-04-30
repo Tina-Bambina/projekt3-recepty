@@ -172,14 +172,19 @@ function receptySeznam() {
     console.log('ddd')
     indexKlikRecept = klikRecept.target.getAttribute('data-index');
 
+    document.querySelector('#recept-foto').src=receptos[indexKlikRecept].img;
+    //ostatni jsou innerhtml!!!!!
+    document.querySelector('#recept-kategorie').innerHTML=receptos[indexKlikRecept].kategorie;
+    document.querySelector('#recept-hodnoceni').innerHTML=receptos[indexKlikRecept].hodnoceni;
+    document.querySelector('#recept-nadpis').innerHTML=receptos[indexKlikRecept].nadpis;
+    document.querySelector('#recept-popis').innerHTML=receptos[indexKlikRecept].popis;
+    
     nacistRecept(indexKlikRecept);    
     ulozKlikRecept(indexKlikRecept);
 
-    document.querySelector('#recept-foto').src=receptos[indexKlikRecept].img;
-
  }
 
- function ulozKlikRecept(indexKlikRecept) {
+ function ulozKlikRecept(indexKlikRecept) { // diodelat
     localStorage.indexA = indexKlikRecept;
 }
 
