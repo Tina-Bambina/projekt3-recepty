@@ -119,8 +119,9 @@ let indexRecept = 0;
 
 
 receptySeznam();
+//receptyPodrobnostiKlik();
 //receptyObrazek();
-//receptyPodrobnosti();
+
 
 
 
@@ -142,28 +143,51 @@ function receptySeznam() {
     let nadpisReceptInfo = document.createElement('h3');
     nadpisReceptInfo.innerHTML= receptos[indexRecept].nadpis;
     receptInfo.appendChild(nadpisReceptInfo);
+    receptInfo.setAttribute('data-index', indexRecept)
+    nadpisReceptInfo.setAttribute('data-index', indexRecept)
 
-    //doprovodny obrazek receptu
+    //doprovodny obrazek receptu - mel by byt v tom policku!
     let receptObrazek =document.createElement('div');
     receptObrazek.className='recept-obrazek';
     recepty.appendChild(receptObrazek);
 
     let receptObrazekImg = document.createElement('img');
     receptObrazekImg.src=receptos[indexRecept].img;
-    receptObrazekImg.alt="Obrazek";
+    receptObrazekImg.alt="obrazek";
     receptObrazek.appendChild(receptObrazekImg);
+    receptObrazek.setAttribute('data-index', indexRecept)
+    receptObrazekImg.setAttribute('data-index', indexRecept)
 
     indexRecept++
+
+    //at se na menu da klikat
+    recept.addEventListener('click', receptyPodrobnostiKlik);
+    recept.setAttribute('data-index', indexRecept)
 
   }
 
 }
 
+ function receptyPodrobnostiKlik(klikRecept, indexKlikRecept) {
+    console.log('ddd')
+    indexKlikRecept = klikRecept.target.getAttribute('data-index');
 
-// function receptyPodrobnosti() {
+    nacistRecept(indexKlikRecept);    
+    ulozKlikRecept(indexKlikRecept);
 
+    document.querySelector('#recept-foto').src=receptos[indexKlikRecept].img;
 
-// }
+ }
+
+ function ulozKlikRecept(indexKlikRecept) {
+    localStorage.indexA = indexKlikRecept;
+}
+
+ function nacistRecept (indexKlikRecept){
+    console.log(indexKlikRecept)
+    //uz to bere klikanou polozku
+
+ }
 
 // function receptyObrazek ()
 // {
