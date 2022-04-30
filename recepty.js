@@ -117,11 +117,17 @@ const receptos = [
 let recepty = document.querySelector('.recepty');
 let indexRecept = 0;
 
-
+filtry();
 receptySeznam();
 receptyPodrobnostiKlik();
 //receptyObrazek();
 
+function filtry(){
+
+  hledejDleJmena();
+  filtrKategorie();
+  radaHodnoceni();
+}
 
 
 
@@ -194,8 +200,17 @@ function receptySeznam() {
 
  }
 
-// function receptyObrazek ()
-// {
 
-// }
+ function hledejDleJmena() {
+  console.log('jmeno')
+}
 
+
+function filtrKategorie() {
+  console.log('kateg')
+  }
+
+  function   radaHodnoceni(){
+    console.log('hodnoceni')
+
+  }
