@@ -113,9 +113,60 @@ const receptos = [
   },
 ]
 
-let recipes = document.querySelector('.recepty');
 
-for (let i = 0; i < receptos.length; i++)
-{
-  console.log('hh')
+let recepty = document.querySelector('.recepty');
+let indexRecept = 0;
+
+
+receptySeznam();
+//receptyObrazek();
+//receptyPodrobnosti();
+
+
+
+function receptySeznam() {
+
+  for (let i = 0; i < receptos.length; i++)
+  {
+    //prazdne policko 
+    let recept = document.createElement('div');
+    recept.className='recept';
+    recept.setAttribute('data-index', indexRecept);
+    recepty.appendChild(recept);
+
+    //iinformace o receptu
+    let receptInfo = document.createElement('div');
+    receptInfo.className="recept-info";
+    recept.appendChild(receptInfo);
+
+    let nadpisReceptInfo = document.createElement('h3');
+    nadpisReceptInfo.innerHTML= receptos[indexRecept].nadpis;
+    receptInfo.appendChild(nadpisReceptInfo);
+
+    //doprovodny obrazek receptu
+    let receptObrazek =document.createElement('div');
+    receptObrazek.className='recept-obrazek';
+    recepty.appendChild(receptObrazek);
+
+    let receptObrazekImg = document.createElement('img');
+    receptObrazekImg.src=receptos[indexRecept].img;
+    receptObrazekImg.alt="Obrazek";
+    receptObrazek.appendChild(receptObrazekImg);
+
+    indexRecept++
+
+  }
+
 }
+
+
+// function receptyPodrobnosti() {
+
+
+// }
+
+// function receptyObrazek ()
+// {
+
+// }
+
