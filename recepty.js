@@ -119,7 +119,7 @@ let indexRecept = 0;
 
 
 receptySeznam();
-//receptyPodrobnostiKlik();
+receptyPodrobnostiKlik();
 //receptyObrazek();
 
 
@@ -171,17 +171,17 @@ function receptySeznam() {
  function receptyPodrobnostiKlik(klikRecept, indexKlikRecept) {
     console.log('ddd')
     indexKlikRecept = klikRecept.target.getAttribute('data-index');
+    nacistRecept(indexKlikRecept);    
+    ulozKlikRecept(indexKlikRecept);
 
     document.querySelector('#recept-foto').src=receptos[indexKlikRecept].img;
     //ostatni jsou innerhtml!!!!!
     document.querySelector('#recept-kategorie').innerHTML=receptos[indexKlikRecept].kategorie;
     document.querySelector('#recept-hodnoceni').innerHTML=receptos[indexKlikRecept].hodnoceni;
-    document.querySelector('#recept-nadpis').innerHTML=receptos[indexKlikRecept].nadpis;
-    document.querySelector('#recept-popis').innerHTML=receptos[indexKlikRecept].popis;
-    
-    nacistRecept(indexKlikRecept);    
-    ulozKlikRecept(indexKlikRecept);
+  //  document.querySelector('#recept-nadpis').innerHTML=receptos[indexKlikRecept].nadpis;
+  //  document.querySelector('#recept-popis').innerHTML=receptos[indexKlikRecept].popis;
 
+    ulozKlikRecept(indexKlikRecept)
  }
 
  function ulozKlikRecept(indexKlikRecept) { // diodelat
